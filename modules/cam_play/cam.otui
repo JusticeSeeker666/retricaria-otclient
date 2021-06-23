@@ -1,0 +1,101 @@
+FileWidget < UIWidget
+  height: 14
+  background-color: alpha
+  &updateOnStates: |
+    function(self)
+      local children = self:getChildren()
+      for i=1,#children do
+        children[i]:setOn(self:isFocused())
+      end
+    end
+  @onFocusChange: self:updateOnStates()
+  @onSetup: self:updateOnStates()
+
+  $focus:
+    background-color: #ffffff22
+
+  Label
+    id: name
+    color: #bbbbbb
+    anchors.top: parent.top
+    anchors.left: parent.left
+    font: verdana-11px-monochrome
+    text-auto-resize: true
+    background-color: alpha
+    text-offset: 2 0
+
+    $on:
+      color: #ffffff
+
+MainWindow
+  !text: tr("Cam Manager")
+  id: mainWindow
+  width: 450
+  height: 320
+  @onEscape: menuClick()
+
+  Button
+    !text: tr('Refresh')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 10
+    width: 80
+    @onClick: fileListRefrsh()
+
+  Button
+    !text: tr('Remove')
+    anchors.top: prev.bottom
+    anchors.left: prev.left
+    anchors.right: prev.right
+    margin-top: 5
+    @onClick: fileListRemove()
+
+  Button
+    !text: tr('More')
+    anchors.top: prev.bottom
+    anchors.left: prev.left
+    anchors.right: prev.right
+    margin-top: 5
+    @onClick: playerWindowToggle()
+
+  TextList
+    id: fileList
+    anchors.top: parent.top
+    anchors.left: prev.right
+    anchors.right: parent.right
+    anchors.bottom: separator.top
+    margin-bottom: 15
+    margin-left: 10
+    padding: 1
+    focusable: false
+    vertical-scrollbar: fileListScrollBar
+    auto-focus: first
+
+  VerticalScrollBar
+    id: fileListScrollBar
+    anchors.top: fileList.top
+    anchors.bottom: fileList.bottom
+    anchors.right: fileList.right
+    step: 14
+    pixels-scroll: true
+
+  HorizontalSeparator
+    id: separator
+    anchors.bottom: closeButton.top
+    anchors.right: parent.right
+    anchors.left: parent.left
+    margin-bottom: 20
+
+  UIWidget
+    !text: tr('DevlandOT Team')
+    anchors.bottom: closeButton.bottom
+    anchors.left: parent.left
+    //!tooltip: tr("")
+    
+  Button
+    id: closeButton
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    !text: tr('Close')
+    text-auto-resize: true
+    @onClick: menuClick()

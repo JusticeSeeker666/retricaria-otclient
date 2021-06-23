@@ -1,0 +1,178 @@
+Panel
+  OptionCheckBox
+    id: classicControl
+    !text: tr('Classic control')
+
+  OptionCheckBox
+    id: autoChaseOverride
+    !text: tr('Allow auto chase override')
+
+  OptionCheckBox
+    id: showPing
+    !text: tr('Show connection ping')
+    !tooltip: tr('Display connection speed to the server (milliseconds)')
+
+  OptionCheckBox
+    id: displayNames
+    !text: tr('Display creature names')
+
+  OptionCheckBox
+    id: displayHealth
+    !text: tr('Display creature health bars')
+
+  OptionCheckBox
+    id: displayMana
+    !text: tr('Display player mana bar')
+
+  OptionCheckBox
+    id: displayText
+    !text: tr('Display text messages')
+
+  OptionCheckBox
+    id: wsadWalking
+    !text: tr('Enable WSAD walking')
+    !tooltip: tr('Disable chat and allow walk using WSAD keys')
+    $mobile:
+      visible: false
+      
+  OptionCheckBox
+    id: dash
+    !text: tr('Enable fast walking (DASH)')
+    !tooltip: tr('Allows to execute next move without server confirmation of previous one')
+
+  OptionCheckBox
+    id: smartWalk
+    !text: tr('Enable smart walking')
+    !tooltip: tr('Will detect when to use diagonal step based on the\nkeys you are pressing')
+
+  Label
+    id: hotkeyDelayLabel
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    !tooltip: tr('Give you some time to make a turn while walking if you press many keys simultaneously')
+    @onSetup: |
+      local value = modules.client_options.getOption('hotkeyDelay')
+      self:setText(tr('Hotkey delay: %s ms', value))
+
+  OptionScrollbar
+    id: hotkeyDelay
+    margin-top: 3
+    minimum: 5
+    maximum: 50
+    width: 200
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+
+  Label
+    id: walkFirstStepDelayLabel
+    margin-top: 10
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    @onSetup: |
+      local value = modules.client_options.getOption('walkFirstStepDelay')
+      self:setText(tr('Walk delay after first step: %s ms', value))
+
+    $mobile:
+      visible: false
+
+  OptionScrollbar
+    id: walkFirstStepDelay
+    margin-top: 3
+    minimum: 50
+    maximum: 300
+    width: 200
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+
+    $mobile:
+      visible: false
+
+  Label
+    id: walkTurnDelayLabel
+    margin-top: 10
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    @onSetup: |
+      local value = modules.client_options.getOption('walkTurnDelay')
+      self:setText(tr('Walk delay after turn: %s ms', value))
+
+    $mobile:
+      visible: false
+
+  OptionScrollbar
+    id: walkTurnDelay
+    margin-top: 3
+    minimum: 0
+    maximum: 300
+    width: 200
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+
+    $mobile:
+      visible: false
+
+  Label
+    id: walkCtrlTurnDelayLabel
+    margin-top: 10
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    $mobile:
+      visible: false
+    @onSetup: |
+      local value = modules.client_options.getOption('walkTurnDelay')
+      self:setText(tr('Walk delay after ctrl turn: %s ms', value))
+
+  OptionScrollbar
+    id: walkCtrlTurnDelay
+    margin-top: 3
+    width: 200
+    minimum: 0
+    maximum: 300
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    $mobile:
+      visible: false
+
+  Label
+    id: walkStairsDelayLabel
+    margin-top: 10
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    @onSetup: |
+      local value = modules.client_options.getOption('walkStairsDelay')
+      self:setText(tr('Walk delay after floor change: %s ms', value))
+    $mobile:
+      visible: false
+
+  OptionScrollbar
+    id: walkStairsDelay
+    margin-top: 3
+    minimum: 0
+    maximum: 300
+    width: 200 
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    $mobile:
+      visible: false
+
+  Label
+    id: walkTeleportDelayLabel
+    margin-top: 10
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    @onSetup: |
+      local value = modules.client_options.getOption('walkTeleportDelay')
+      self:setText(tr('Walk delay after teleport: %s ms', value))
+    $mobile:
+      visible: false
+
+  OptionScrollbar
+    id: walkTeleportDelay
+    margin-top: 3
+    minimum: 0
+    maximum: 300
+    width: 200
+    anchors.left: parent.left
+    anchors.top: prev.bottom
+    $mobile:
+      visible: false

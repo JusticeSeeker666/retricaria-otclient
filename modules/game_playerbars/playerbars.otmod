@@ -1,0 +1,10 @@
+Module
+  name: game_playerbars
+  description: Displays vip, skills, battle, and logout
+  author: edubart, BeniS
+  website: www.otclient.info
+  autoload: true
+  sandboxed: true
+  scripts: [ playerbars ]
+  @onLoad: init()
+  @onUnload: terminate()

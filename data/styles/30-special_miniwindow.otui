@@ -1,0 +1,72 @@
+SpecialMiniWindow < UIMiniWindow
+  font: verdana-11px-antialised
+  icon-rect: 4 3 13 12
+  width: 192
+  height: 200
+  text-offset: 20 2
+  text-align: topLeft
+  image-source: /images/ui/special_miniwindow
+  image-border: 4
+  image-border-top: 20
+  image-border-bottom: 4
+  focusable: false
+  &minimizedHeight: 20
+
+  $on:
+    image-border-bottom: 2
+
+  UIWidget
+    id: miniwindowTopBar
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.left: parent.left
+    margin-right: 3
+    margin-left: 3
+    margin-top: 3
+    size: 258 18
+    phantom: true
+
+  UIButton
+    id: closeButton
+
+  UIButton
+    id: minimizeButton
+
+  VerticalScrollBar
+    id: miniwindowScrollBar
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    step: 14
+    margin-top: 16
+    margin-right: 4
+    margin-bottom: 3
+    pixels-scroll: true
+
+    $!on:
+      width: 0
+
+  ResizeBorder
+    id: bottomResizeBorder
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 3
+    minimum: 48
+    margin-left: 3
+    margin-right: 3
+    enabled: false
+
+MiniWindowContents < ScrollablePanel
+  id: contentsPanel
+  anchors.fill: parent
+  anchors.right: miniwindowScrollBar.left
+  margin-left: 3
+  margin-bottom: 3
+  margin-top: 22
+  margin-right: 1
+  vertical-scrollbar: miniwindowScrollBar
+
+BorderlessGameWindow < UIWindow
+  focusable: false
+  margin: 2

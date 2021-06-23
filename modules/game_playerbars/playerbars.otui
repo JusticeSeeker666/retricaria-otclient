@@ -1,0 +1,49 @@
+SpecialMiniWindow
+
+  id: playerBarsWindow
+  height: 30
+  @onClose: modules.game_inventory.onMiniWindowClose()
+  &save: true
+  &notMinimize: true
+  
+  MiniWindowContents
+
+  ButtonBox
+    id: SkillsButton
+    font: cipsoftFont
+    text: Skills
+    size: 38 20
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin: 5 6
+    @onCheckChange: modules.game_skills.toggle()
+
+  ButtonBox
+    id: BattleButton
+    font: cipsoftFont
+    anchors.left: SkillsButton.right
+    anchors.top: SkillsButton.top
+    margin-left: 4
+    text: Battle
+    size: 38 20
+    @onCheckChange: modules.game_battle.toggle()
+
+  ButtonBox
+    id: VipButton
+    font: cipsoftFont
+    anchors.left: BattleButton.right
+    anchors.top: BattleButton.top
+    margin-left: 4
+    text: VIP
+    size: 38 20
+    @onCheckChange: modules.game_viplist.toggle()
+
+  Button
+    id: logoutButton
+    font: cipsoftFont
+    anchors.right: parent.right
+    anchors.top: VipButton.top
+    margin-right: 10
+    text: Logout
+    size: 43 20
+    @onClick: modules.game_interface.tryLogout()

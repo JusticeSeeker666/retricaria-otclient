@@ -1,0 +1,352 @@
+InventoryItem < Item
+
+HeadSlot < InventoryItem
+  id: slot1
+  image-source: /images/game/slots/head
+  &position: {x=65535, y=1, z=0}
+
+BodySlot < InventoryItem
+  id: slot4
+  image-source: /images/game/slots/body
+  &position: {x=65535, y=4, z=0}
+
+LegSlot < InventoryItem
+  id: slot7
+  image-source: /images/game/slots/legs
+  &position: {x=65535, y=7, z=0}
+
+FeetSlot < InventoryItem
+  id: slot8
+  image-source: /images/game/slots/feet
+  &position: {x=65535, y=8, z=0}
+
+NeckSlot < InventoryItem
+  id: slot2
+  image-source: /images/game/slots/neck
+  &position: {x=65535, y=2, z=0}
+
+LeftSlot < InventoryItem
+  id: slot6
+  image-source: /images/game/slots/left-hand
+  &position: {x=65535, y=6, z=0}
+
+FingerSlot < InventoryItem
+  id: slot9
+  image-source: /images/game/slots/finger
+  &position: {x=65535, y=9, z=0}
+
+BackSlot < InventoryItem
+  id: slot3
+  image-source: /images/game/slots/back
+  &position: {x=65535, y=3, z=0}
+
+RightSlot < InventoryItem
+  id: slot5
+  image-source: /images/game/slots/right-hand
+  &position: {x=65535, y=5, z=0}
+
+AmmoSlot < InventoryItem
+  id: slot10
+  image-source: /images/game/slots/ammo
+  &position: {x=65535, y=10, z=0}
+
+CombatBox < UICheckBox
+  size: 20 20
+  image-clip: 0 0 20 20
+  margin: 2 4
+
+  $checked:
+    image-clip: 0 20 20 20
+
+StandModeBox < CombatBox
+  image-source: /images/game/combatmodes/standmode
+FightOffensiveBox < CombatBox
+  image-source: /images/game/combatmodes/fightoffensive
+FightBalancedBox < CombatBox
+  image-source: /images/game/combatmodes/fightbalanced
+FightDefensiveBox < CombatBox
+  image-source: /images/game/combatmodes/fightdefensive
+ChaseModeBox < CombatBox
+  image-source: /images/game/combatmodes/chasemode
+SafeFightBox < CombatBox
+  image-source: /images/game/combatmodes/safefight
+
+
+SoulLabel < GameLabel
+  id: soulLabel
+  text-align: center
+  color: white
+  font: cipsoftFont
+  anchors.bottom: soulPanel.bottom
+  anchors.right: soulPanel.right
+  anchors.left: soulPanel.left
+  margin-bottom: -1
+  on: true
+
+  $!on:
+    visible: false
+    margin-top: 0
+    height: 0
+
+CapLabel < GameLabel
+  id: capLabel
+  text-align: center
+  color: white
+  font: cipsoftFont
+  anchors.bottom: capPanel.bottom
+  anchors.right: capPanel.right
+  anchors.left: capPanel.left
+  margin-bottom: -1
+  on: true
+
+  $!on:
+    visible: false
+    margin-top: 0
+    height: 0
+
+SoulTitle < GameLabel
+  id: soulTitle
+  text: Soul:
+  text-align: center
+  color: white
+  font: cipsoftFont
+  anchors.bottom: soulLabel.bottom
+  anchors.right: soulLabel.right
+  anchors.left: soulLabel.left
+  margin-bottom: 9
+  on: true
+
+  $!on:
+    visible: false
+    margin-top: 0
+    height: 0
+
+CapTitle < GameLabel
+  id: capTitle
+  text: Cap:
+  text-align: center
+  color: white
+  font: cipsoftFont
+  anchors.bottom: capLabel.bottom
+  anchors.right: capLabel.right
+  anchors.left: capLabel.left
+  margin-bottom: 9
+  on: true
+
+  $!on:
+    visible: false
+    margin-top: 0
+    height: 0
+
+ConditionWidget < UIWidget
+  margin-bottom: 2
+  width: 10
+
+  $!first:
+    margin-left: 1
+
+SpecialMiniWindow
+  id: inventoryWindow
+  height: 171
+  @onClose: modules.game_inventory.onMiniWindowClose()
+  &save: true
+  &notMinimize: true
+
+  MiniWindowContents
+
+    HeadSlot
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 40
+      margin-top: 3
+
+    BodySlot
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+
+    LegSlot
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+
+    FeetSlot
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+
+    NeckSlot
+      anchors.top: slot1.top
+      anchors.right: slot1.left
+      margin-top: 13
+      margin-right: 4
+
+    LeftSlot
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+
+    FingerSlot
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+
+    SoulPanel
+      id: soulPanel
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 3
+      margin-left: 3
+
+    BackSlot
+      anchors.top: slot1.top
+      anchors.left: slot1.right
+      margin-top: 13
+      margin-left: 3
+
+    RightSlot
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+
+    AmmoSlot
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+      margin-top: 3
+
+    CapPanel
+      id: capPanel
+      anchors.top: prev.bottom
+      anchors.left: prev.left
+      margin-top: 2
+      margin-right: 17
+
+    SoulTitle
+    SoulLabel
+    CapTitle
+    CapLabel
+
+    Panel
+      id: conditionPanel
+      layout:
+        type: horizontalBox
+      image-source: /images/game/slots/conditionPanel
+      height: 13
+      margin-top: 3
+      margin-right: 73
+      anchors.top: soulPanel.bottom
+      anchors.left: soulPanel.left
+      anchors.right: parent.right
+      border-color: black
+
+    FightOffensiveBox
+      id: fightOffensiveBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 16
+      margin-right: 29
+
+    FightBalancedBox
+      id: fightBalancedBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 37
+      margin-right: 29
+
+    FightDefensiveBox
+      id: fightDefensiveBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 57
+      margin-right: 29
+
+    StandModeBox
+      id: standModeBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 16
+      margin-right: 6
+  
+    ChaseModeBox
+      id: chaseModeBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 36
+      margin-right: 6
+
+    SafeFightBox
+      id: safeFightBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 57
+      margin-right: 6
+
+  Button
+    id: stopButton
+    font: cipsoftFont
+    !text: tr('Stop')
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 83
+    margin-right: 10
+    size: 43 20
+    @onClick: function() g_game.cancelAttackAndFollow() end
+
+  Button
+    id: optionsButton
+    font: cipsoftFont
+    !text: tr('Options')
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 100
+    margin-right: 10
+    size: 43 20
+    @onClick: modules.client_options.toggle()
+
+  Button
+    id: hotkeysButton
+    font: cipsoftFont
+    !text: tr('Hotkeys')
+    anchors.top: optionsButton.bottom
+    anchors.right: parent.right
+    margin-top: 3
+    margin-right: 10
+    size: 43 20
+    @onClick: modules.game_hotkeys.toggle()
+
+  Button
+    id: questButton
+    font: cipsoftFont
+    !text: tr('Quests')
+    anchors.top: hotkeysButton.bottom
+    anchors.right: parent.right
+    margin-top: 3
+    margin-right: 10
+    size: 43 20
+    @onClick: g_game.requestQuestLog()
+
+  UIButton
+    id: minButton
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 4
+    margin-left: 6
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 0 0 14 14
+    @onClick: onInventoryMinimize(not self:isOn())
+
+    $hover:
+      image-clip: 0 14 14 14
+
+    $pressed:
+      image-clip: 0 28 14 14
+
+    $on:
+      image-clip: 14 0 14 14
+
+    $on hover:
+      image-clip: 14 14 14 14
+
+    $on pressed:
+      image-clip: 14 28 14 14

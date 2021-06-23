@@ -1,0 +1,60 @@
+MainWindow
+  id: camPlayerWindow
+  !text: tr('Cam Player')
+  width: 350
+  height: 155
+
+  Label
+    id: fileName
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 5
+    margin-left: 5
+    text-auto-resize: true
+    !text: tr("File:")
+  
+  HorizontalScrollBar
+    id: timeBar
+    anchors.left: prev.left
+    anchors.top: prev.bottom
+    anchors.right: parent.right
+    margin-top: 15
+    margin-right: 5
+    minimum: 1
+    maximum: 100
+    step: 1
+    enabled: false
+    @onValueChange: modules.cam_play.timeBarOnValueChange(self, self:getValue())
+
+  Label
+    id: timeNow
+    anchors.top: prev.bottom
+    anchors.left: prev.left
+    margin-top: 3
+    text-align: left
+    !text: tr("00:00:00")
+    text-auto-resize: true
+
+  Label
+    id: timeMax
+    anchors.top: prev.top
+    anchors.right: timeBar.right
+    !text: tr("00:00:00")
+    text-align: right
+    text-auto-resize: true
+
+  Button
+    anchors.horizontalCenter: timeBar.horizontalCenter
+    anchors.top: timeBar.bottom
+    margin-top: 5
+    !text: tr("Play/Stop")
+    text-auto-resize: true
+    @onClick: modules.cam_play.onStopClick()
+
+  Button
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-right: 5
+    !text: tr("close")
+    id: closeButton
+    @onClick: modules.cam_play.playerWindowToggle()

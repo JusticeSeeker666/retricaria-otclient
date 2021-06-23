@@ -1,0 +1,61 @@
+Panel
+  Label
+    id: panelPrioriteLabel
+    !text: tr('Panel priorite')
+    anchors.left: parent.left
+    anchors.top: parent.top
+    width: 100
+
+  ButtonBox
+    id: leftPanelMode
+    anchors.left: parent.left
+    anchors.top: panelPrioriteLabel.bottom
+    margin-top: 5
+    margin-bottom: 10
+    text: Left
+    size: 100 20
+
+  ButtonBox
+    id: rightPanelMode
+    anchors.left: leftPanelMode.right
+    anchors.top: panelPrioriteLabel.bottom
+    margin-top: 5
+    text: Right
+    size: 100 20
+    margin-left: 4
+
+  OptionCheckBox
+    id: showRightPanel
+    !text: tr('Show right panel')
+    anchors.top: leftPanelMode.bottom
+    anchors.right: parent.right
+    anchors.left: parent.left
+    margin-top: 20
+
+  OptionCheckBox
+    id: showRightSecondPanel
+    !text: tr('Show right second panel')
+    enabled: false
+
+  OptionCheckBox
+    id: showRightThirdPanel
+    !text: tr('Show right third panel')
+    enabled: false
+
+  OptionCheckBox
+    id: showLeftPanel
+    !text: tr('Show left panel')
+
+  OptionCheckBox
+    id: showLeftSecondPanel
+    !text: tr('Show left second panel')
+    enabled: false
+
+  OptionCheckBox
+    id: showLeftThirdPanel
+    !text: tr('Show left third panel')
+    enabled: false
+
+  OptionCheckBox
+    id: moveWindowsToPanel
+    !text: tr('Move windows to panel')

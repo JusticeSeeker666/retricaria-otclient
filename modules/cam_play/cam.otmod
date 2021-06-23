@@ -1,0 +1,11 @@
+Module
+  name: cam_play
+  description: CAM Play
+  author: Gustavo Blaze
+  website: https://github.com/GustavoBlaze
+  sandboxed: true
+  scripts: [cam]
+  @onLoad: if g_game.camSystemEnabled() then init() end
+  @onUnload: if g_game.camSystemEnabled() then terminate() end
+  version: 1.0
+  autoload: true

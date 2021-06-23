@@ -1,0 +1,75 @@
+FullHealthBar < ProgressBar
+  image-source: /images/ui/progressbar
+  anchors.top: parent.top
+  anchors.left: parent.left
+  margin-left: 21
+  margin-top: 2
+
+HealthBar < ProgressBar
+  id: healthBar
+  image-source: /images/ui/progressbarhp
+  anchors.top: parent.top
+  anchors.left: parent.left
+  margin-left: 21
+  margin-top: 2
+
+ManaBar < ProgressBar
+  id: manaBar
+  image-source: /images/ui/progressbarmana
+  anchors.top: healthBar.bottom
+  anchors.left: parent.left
+  margin-left: 21
+  margin-top: 3
+
+FullManaBar < ProgressBar
+  image-source: /images/ui/progressbar
+  anchors.top: healthBar.bottom
+  anchors.left: parent.left
+  margin-left: 21
+  margin-top: 3
+
+HealthLabel < GameLabel
+  id: healthLabel
+  color: #AFAFAF
+  font: verdana-11px-antialised
+  text-offset: 140 0
+  anchors.right: parent.right
+  anchors.left: parent.left
+  anchors.top: healthBar.top
+  anchors.bottom: healthBar.bottom
+  margin-top: -2
+  margin-left: -20
+
+ManaLabel < GameLabel
+  id: manaLabel
+  color: #AFAFAF
+  font: verdana-11px-antialised
+  text-offset: 140 0
+  anchors.left: parent.left
+  anchors.right: parent.right
+  anchors.top: manaBar.top
+  anchors.bottom: manaBar.bottom
+  margin-top: -2
+  margin-left: -20
+
+SpecialMiniWindow
+  id: healthInfoWindow
+  height: 38
+  @onClose: modules.game_healthinfo.onMiniWindowClose()
+  &save: true
+  &notMinimize: true
+
+  MiniWindowContents
+
+    FullHealthBar
+    HealthBar
+    FullManaBar
+    ManaBar
+    HealthLabel
+    ManaLabel
+
+    ProgressIcons
+      anchors.top: parent.top
+      anchors.left: manaBar.left
+      margin-left: -17
+      margin-top: 3

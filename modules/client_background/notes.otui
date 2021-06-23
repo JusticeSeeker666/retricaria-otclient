@@ -1,0 +1,24 @@
+MainWindow
+  id: notesBox
+  !text: tr('Notes')
+  size: 300 600
+
+  TextEdit
+    id: notesEditPanel
+    text-wrap: true
+    multiline: true
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-bottom: 29
+    max-length: 2000
+    @onTextChange:
+
+  Button
+    id: buttonOk
+    !text: tr('Ok')
+    width: 60
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: toggleNotesWindow()
