@@ -2,6 +2,8 @@
 - This OTClient is a optimized-fixed version from the original Nostalrius distro that contains a lot of enhancements but the most relevant features are:
 * CAM Module
 * Encryption Module
+* Injected DLL detection
+And many many more
 
 ### Bugs
 
